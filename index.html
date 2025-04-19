@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Book Flip</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="book-wrapper">
+    <div class="page inner-page">
+      <p>Happy Monthsary!<br> I love you! Napaka angas! ❤️<br>
+        Sana nagustuhan mo ang aking munting virtual letter na ito. <br>
+        Ngayon mo sabihing hindi kita binati at talaga naman <br>
+        HAHAHAHAHAHAHA
+      </p>
+    </div>
+
+    <div class="page cover-page"></div>
+  </div>
+
+  <script>
+    const coverPage = document.querySelector('.cover-page');
+
+    coverPage.addEventListener('click', function () {
+      this.classList.toggle('open');
+    });
+  </script>
+
+</body>
+</html>

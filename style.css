@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .book-wrapper {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    max-width: 600px;
+    min-height: 500px;
+    perspective: 1200px;
+    margin: 50px;
+  }
+  
+  .page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    color: white;
+    display: flex;
+    font-size: 5vw;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transition: transform 1s ease, opacity 1s ease;
+    overflow: hidden;
+  }
+  
+  .cover-page {
+    background-image: url('images/front-page.png');
+    background-size: 100% 100%;
+    background-position: center;
+    transform-origin: left;
+    z-index: 2;
+    cursor: pointer;
+  }
+  
+  .inner-page {
+    z-index: 1;
+    color: black;
+  }
+
+  .cover-page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    opacity: 0;
+    transition: opacity 1s ease;
+    z-index: 1;
+  }
+  
+  .cover-page.open::before {
+    opacity: 1; 
+  }
+
+    .cover-page.open {
+        transform: rotateY(-88deg);
+    }
+  
+    @media screen and (min-width: 1200px) {
+        .page {
+        font-size: 2vw; 
+        }
+    }
+    
+    @media screen and (max-width: 1200px) and (min-width: 700px) {
+        .page {
+        font-size: 3vw; 
+        }
+    }
+
+
+
+    @media screen and (max-width: 700px) {
+        .book-wrapper {
+            width: 90%;
+            height: auto;
+        }
+
+        .page {
+            font-size: 8vw; 
+            min-height: 150px;
+          }
+        
+          .cover-page span {
+            font-size: 10vw; 
+          }
+    }
+  
