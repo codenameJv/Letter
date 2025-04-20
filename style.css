@@ -1,21 +1,23 @@
 body {
     margin: 0;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: auto;
+    padding: 20px;
+    box-sizing: border-box;
     overflow: hidden;
   }
   
   .book-wrapper {
     position: relative;
     width: 100%;
-    height: 80vh;
     max-width: 600px;
-    min-height: 500px;
+    aspect-ratio: 3 / 4;
     perspective: 1200px;
-    margin: 50px;
+    margin: 0 auto;
   }
   
   .page {
@@ -25,17 +27,22 @@ body {
     background-color: white;
     color: white;
     display: flex;
-    font-size: 5vw;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(16px, 4vw, 28px);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
     transition: transform 1s ease, opacity 1s ease;
     overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
   }
   
   .cover-page {
     background-image: url('images/front-page.png');
-    background-size: 100% 100%;
+    background-size: cover;
     background-position: center;
     transform-origin: left;
     z-index: 2;
@@ -46,7 +53,7 @@ body {
     z-index: 1;
     color: black;
   }
-
+  
   .cover-page::before {
     content: '';
     position: absolute;
@@ -63,38 +70,32 @@ body {
   .cover-page.open::before {
     opacity: 1; 
   }
-
-    .cover-page.open {
-        transform: rotateY(-88deg);
+  
+  .cover-page.open {
+    transform: rotateY(-88deg);
+  }
+  
+  /* Responsive font adjustments */
+  @media screen and (min-width: 1200px) {
+    .page {
+      font-size: clamp(18px, 2vw, 24px);
+    }
+  }
+  
+  @media screen and (max-width: 700px) {
+    .book-wrapper {
+      width: 90%;
+      height: auto;
+      aspect-ratio: 3 / 4;
     }
   
-    @media screen and (min-width: 1200px) {
-        .page {
-        font-size: 2vw; 
-        }
+    .page {
+      font-size: clamp(16px, 5vw, 20px);
+      min-height: 200px;
     }
-    
-    @media screen and (max-width: 1200px) and (min-width: 700px) {
-        .page {
-        font-size: 3vw; 
-        }
+  
+    .cover-page span {
+      font-size: clamp(18px, 6vw, 28px);
     }
-
-
-
-    @media screen and (max-width: 700px) {
-        .book-wrapper {
-            width: 90%;
-            height: auto;
-        }
-
-        .page {
-            font-size: 8vw; 
-            min-height: 150px;
-          }
-        
-          .cover-page span {
-            font-size: 10vw; 
-          }
-    }
+  }
   
